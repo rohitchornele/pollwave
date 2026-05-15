@@ -33,7 +33,9 @@ api.interceptors.response.use(
       originalRequest.url.includes("/auth/register");
 
     if (status === 401 && !isAuthRoute) {
-      localStorage.clear();
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("user");
 
       if (window.location.pathname !== "/login") {
         window.location.href = "/login";
