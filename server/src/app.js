@@ -12,8 +12,10 @@ import voteRouter from "./modules/votes/vote.route.js";
 const app = express();
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true
+    origin: [
+        "https://pollwave-eight.vercel.app"
+    ],
+    credentials: true,
 }));
 
 app.use(express.json());
