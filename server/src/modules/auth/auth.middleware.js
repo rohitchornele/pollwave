@@ -24,7 +24,7 @@ const authenticate = async (req, res, next) => {
 
         console.log("DECODED =", decoded);
 
-        const user = await User.findById(decoded.id).select("-password")
+        const user = await User.findById(decoded._id).select("-password")
 
         if (!user) {
             throw ApiError.unAuthorized("USer no longer exist")
