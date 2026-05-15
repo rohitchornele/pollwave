@@ -7,7 +7,7 @@ const pollRouter = express.Router();
 // Create Poll
 pollRouter.post("/", authenticate, pollController.createPoll);
 
-pollRouter.get("/", authenticate, pollController.getAllPolls);
+pollRouter.get("/", pollController.getAllPolls);
 
 pollRouter.get("/:pollId", pollController.getPollById);
 
