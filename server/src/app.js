@@ -11,10 +11,27 @@ import voteRouter from "./modules/votes/vote.route.js";
 
 const app = express();
 
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://pollwave-eight.vercel.app",
+];
+
 app.use(cors({
-    origin: [
-        "https://pollwave-eight.vercel.app"
-    ],
+    origin: (origin, callback) => {
+
+        if (!origin) {
+            return callback(null, true);
+        }
+
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+
+        return callback(
+            new Error("CORS not allowed")
+        );
+    },
+
     credentials: true,
 }));
 
@@ -27,7 +44,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/health", (req, res) => {
-    res.json({status: 200, message: "Server is healthy"});
+    res.json({ status: 200, message: "Server is healthy" });
 });
 
 app.use("/api/auth", authRouter)
@@ -35,7 +52,7 @@ app.use("/api/polls", pollRouter)
 app.use("/api/votes", voteRouter)
 
 app.all("{*path}", (req, res) => {
-  throw ApiError.notFound(`Route ${req.originalUrl} not found`);
+    throw ApiError.notFound(`Route ${req.originalUrl} not found`);
 });
 
 
