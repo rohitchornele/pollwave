@@ -35,6 +35,8 @@ const authenticate = async (req, res, next) => {
             email: user.email
         }
 
+        console.log("AUTH HEADER =", req.headers.authorization);
+
         // console.log("user in middleware = ", user)
 
         next()
