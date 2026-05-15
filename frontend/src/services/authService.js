@@ -32,13 +32,13 @@ const authService = {
         const response = await api.post(`/auth/login`, credentials);
 
         if (response.data.accessToken) {
-            localStorage.setItem('accessToken', response.data.accessToken)
+            localStorage.setItem('accessToken', response.data.data.accessToken)
             localStorage.setItem(
                 'user',
-                JSON.stringify(response.data.user || response.data),
+                JSON.stringify(response.data.data.user || response.data),
             )
         }
-        return response.data;
+        return response.data.data;
     },
 
     getUserDashboard: async () => {
