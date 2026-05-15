@@ -22,6 +22,8 @@ const authenticate = async (req, res, next) => {
 
         const decoded = verifyAccessToken(token)
 
+        console.log("DECODED =", decoded);
+
         const user = await User.findById(decoded.id).select("-password")
 
         if (!user) {

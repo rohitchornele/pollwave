@@ -11,9 +11,7 @@ export const getAllPolls = async () => {
 
     const polls = await Poll.find({
         status: "active"
-    })
-        .populate("createdBy", "name avatar")
-        .sort({ createdAt: -1 });
+    }).populate("createdBy", "name avatar").sort({ createdAt: -1 });
 
     return polls;
 };
