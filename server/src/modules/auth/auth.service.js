@@ -6,7 +6,7 @@ import ApiError from "../../common/utils/api-error.js";
 import { sendVerificationEmail } from "../../common/utils/email/send-email.js";
 
 const hashToken = (token) => {
-    crypto.createHash("sha256").update(token).digest("hex")
+    return crypto.createHash("sha256").update(token).digest("hex")
 }
 
 const register = async ({ name, email, password, role }) => {
@@ -193,12 +193,6 @@ const verifyEmail = async (token) => {
     const hashedInput = hashToken(trimmed);
 
     const user = await User.findOne({ verificationToken: hashedToken }).select("+verificationToken")
-
-    if (!user) {
-        user = await User.findOne({ verificationToken: trimmed }).select(
-            "+verificationToken",
-        );
-    }
 
     if (!user) throw ApiError.badRequest("Invalid or expired verification token");
     await User.findByIdAndUpdate(user._id, {
