@@ -5,8 +5,10 @@ import { authenticate } from "../auth/auth.middleware.js";
 const pollRouter = express.Router();
 
 // Create Poll
-pollRouter.post("/", authenticate, pollController.createPoll);
+// pollRouter.post("/", authenticate, pollController.createPoll);
+pollRouter.post("/", pollController.createPoll);
 
+// pollRouter.get("/", authenticate, pollController.getAllPolls);
 pollRouter.get("/", pollController.getAllPolls);
 
 pollRouter.get("/:pollId", pollController.getPollById);

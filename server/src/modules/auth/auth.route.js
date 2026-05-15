@@ -12,11 +12,11 @@ const authRouter = Router();
 authRouter.post("/register", validate(RegisterDto), controller.register);
 authRouter.post("/login", validate(LoginDto), controller.login);
 authRouter.post("/logout", authenticate, controller.logout);
-authRouter.get("/me", authenticate, controller.getMe);
+// authRouter.get("/me", authenticate, controller.getMe);
+authRouter.get("/me", controller.getMe);
 authRouter.get("/verify-email/:token", controller.verifyEmail);
 authRouter.post("/forgot-password", validate(ForgotPasswordDto), controller.forgotPassword);
 authRouter.put( "/reset-password/:token", validate(ResetPasswordDto), controller.resetPassword);
-authRouter.get("/me", authenticate, controller.getMe);
 
 authRouter.post("/refresh", controller.refreshToken);
 

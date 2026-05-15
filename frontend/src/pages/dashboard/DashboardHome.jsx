@@ -43,14 +43,13 @@ const DashboardHome = () => {
     try {
       setLoading(true);
       setError("");
-      console.log("inside fetch poll")
       const response = await pollService.getAllPolls();
 
       console.log("poll response = ", response);
 
       const pollsData =
-        response?.data?.data ||
-        response.data ||
+        response?.data ||
+        response ||
         [];
 
       setPolls(

@@ -50,13 +50,9 @@ const pollService = {
 
     try {
 
-      const response =
-        await api.get("/polls");
+      const response = await api.get("/polls");
 
-      console.log(
-        "response = ",
-        response
-      );
+      console.log( "response = ", response);
 
       return response.data;
 
