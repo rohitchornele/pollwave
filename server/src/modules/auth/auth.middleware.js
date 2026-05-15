@@ -15,11 +15,15 @@ const authenticate = async (req, res, next) => {
             token = req.headers.authorization.split(" ")[1];
         }
 
-        if (!token) {
-            throw ApiError.unAuthorized("Not Authenticated")
-        }
+        console.log("token = ", token);
+
+        // if (!token) {
+        //     throw ApiError.unAuthorized("Not Authenticated")
+        // }
 
         const decoded = verifyAccessToken(token)
+
+    
 
         console.log("DECODED =", decoded);
 
