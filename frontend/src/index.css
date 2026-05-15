@@ -1,0 +1,137 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"); */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Geist:ital,wght@0,100..900;1,100..900&display=swap');
+.font-syne {
+	font-family: "Syne", sans-serif;
+}
+.font-dm {
+	font-family: "DM Sans", sans-serif;
+}
+@import "tailwindcss";
+
+/* grain overlay */
+.grain::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* grid bg */
+.grid-bg::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+	background-size: 60px 60px;
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* orange radial glow */
+.hero-glow {
+	position: fixed;
+	top: -100px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 700px;
+	height: 600px;
+	background: radial-gradient(
+		ellipse at center,
+		rgba(234, 88, 12, 0.1) 0%,
+		transparent 70%
+	);
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* staggered fade-up */
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+.fade-up-1 {
+	animation: fadeUp 0.6s ease 0.05s both;
+}
+.fade-up-2 {
+	animation: fadeUp 0.6s ease 0.15s both;
+}
+.fade-up-3 {
+	animation: fadeUp 0.6s ease 0.25s both;
+}
+.fade-up-4 {
+	animation: fadeUp 0.6s ease 0.35s both;
+}
+.fade-up-5 {
+	animation: fadeUp 0.6s ease 0.45s both;
+}
+.fade-up-6 {
+	animation: fadeUp 0.6s ease 0.55s both;
+}
+
+/* logo float */
+@keyframes logoFloat {
+	0%,
+	100% {
+		transform: rotate(12deg) translateY(0);
+	}
+	50% {
+		transform: rotate(12deg) translateY(-3px);
+	}
+}
+.logo-icon {
+	animation: logoFloat 3s ease-in-out infinite;
+}
+
+/* submit shimmer */
+.submit-btn {
+	position: relative;
+	overflow: hidden;
+}
+.submit-btn::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 60%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, 0.1),
+		transparent
+	);
+	transform: skewX(-20deg);
+	transition: left 0.5s ease;
+}
+.submit-btn:not(:disabled):hover::after {
+	left: 150%;
+}
+
+/* spinner */
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+.spinner {
+	width: 16px;
+	height: 16px;
+	border: 2px solid rgba(255, 255, 255, 0.25);
+	border-top-color: #fff;
+	border-radius: 50%;
+	animation: spin 0.7s linear infinite;
+	display: inline-block;
+}

@@ -1,0 +1,110 @@
+# =========================
+# ROOT
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# NODE MODULES
+# =========================
+node_modules/
+frontend/node_modules/
+server/node_modules/
+
+# =========================
+# ENV FILES
+# =========================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+frontend/.env
+server/.env
+
+# =========================
+# LOG FILES
+# =========================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# BUILD FILES
+# =========================
+dist/
+build/
+
+frontend/dist/
+frontend/build/
+
+server/dist/
+server/build/
+
+# =========================
+# VITE
+# =========================
+vite.config.timestamp-*
+*.local
+
+# =========================
+# CACHE
+# =========================
+.cache/
+.parcel-cache/
+
+# =========================
+# IDE FILES
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS GENERATED FILES
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# TEST COVERAGE
+# =========================
+coverage/
+
+# =========================
+# TEMP FILES
+# =========================
+*.tmp
+*.temp
+
+# =========================
+# SERVERLESS / DEPLOYMENT
+# =========================
+.vercel/
+.netlify/
+
+# =========================
+# PM2
+# =========================
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# =========================
+# OPTIONAL DATABASE FILES
+# =========================
+*.sqlite
+*.db
+
+# =========================
+# UPLOADS (optional)
+# =========================
+server/uploads/
+
+# =========================
+# MAC FILES
+# =========================
+.AppleDouble
+.LSOverride
