@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo, useState,} from "react";
+import React, { useEffect, useMemo, useState, } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { Plus, BarChart2, Users, Eye, Activity,} from "lucide-react";
+import { Plus, BarChart2, Users, Eye, Activity, } from "lucide-react";
 
 import DashboardGreeting from "../../components/dashboard/DashboardGreeting";
 import DashboardStats from "../../components/dashboard/DashboardStats";
@@ -27,54 +27,30 @@ const DashboardHome = () => {
 
   const [polls, setPolls] = useState([]);
 
-  const [loading, setLoading] =
-    useState(true);
+  const [loading, setLoading] = useState(true);
 
-  const [error, setError] =
-    useState("");
+  const [error, setError] = useState("");
 
-  /*
-    ───────────────────────────────
-    USER
-    ───────────────────────────────
-  */
 
-    console.log("user data = ", user)
+  console.log("user data = ", user)
   const firstName = user?.name?.split(" ")[0];
 
-    console.log("firstname = ", firstName)
+  console.log("firstname = ", firstName)
 
-  /*
-    ───────────────────────────────
-    FETCH POLLS
-    ───────────────────────────────
-  */
-
-  useEffect(() => {
-
-    fetchPolls();
-
-  }, []);
 
   const fetchPolls = async () => {
 
     try {
-
       setLoading(true);
-
       setError("");
+      console.log("inside fetch poll")
+      const response = await pollService.getAllPolls();
 
-      const response =
-        await pollService.getAllPolls();
-
-      console.log(
-        "poll response = ",
-        response
-      );
+      console.log("poll response = ", response);
 
       const pollsData =
-        response?.data ||
-        response ||
+        response?.data?.data ||
+        response.data ||
         [];
 
       setPolls(
@@ -100,6 +76,12 @@ const DashboardHome = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+
+    fetchPolls();
+
+  }, []);
 
   /*
     ───────────────────────────────
@@ -134,8 +116,8 @@ const DashboardHome = () => {
     const avgResponse =
       totalPolls > 0
         ? Math.round(
-            totalVotes / totalPolls
-          )
+          totalVotes / totalPolls
+        )
         : 0;
 
     return [
@@ -265,64 +247,64 @@ const DashboardHome = () => {
             polls.length === 0 &&
             !error && (
 
-            <div
-              className="panel"
-              style={{
-                padding: 40,
-                textAlign: "center",
-              }}
-            >
-
-              <Activity
-                size={42}
+              <div
+                className="panel"
                 style={{
-                  color: "#57534e",
-                  marginBottom: 12,
-                }}
-              />
-
-              <h3
-                style={{
-                  color: "#f0ece4",
-                  marginBottom: 8,
+                  padding: 40,
+                  textAlign: "center",
                 }}
               >
-                No polls yet
-              </h3>
 
-              <p
-                style={{
-                  color: "#57534e",
-                  marginBottom: 20,
-                }}
-              >
-                Create your first poll
-                to get started.
-              </p>
+                <Activity
+                  size={42}
+                  style={{
+                    color: "#57534e",
+                    marginBottom: 12,
+                  }}
+                />
 
-              <button
-                onClick={() =>
-                  navigate(
-                    "/dashboard/polls/create"
-                  )
-                }
-                style={{
-                  background: "#ea580c",
-                  color: "#fff",
-                  border: "none",
-                  padding:
-                    "10px 18px",
-                  borderRadius: 10,
-                  cursor: "pointer",
-                  fontWeight: 600,
-                }}
-              >
-                Create Poll
-              </button>
+                <h3
+                  style={{
+                    color: "#f0ece4",
+                    marginBottom: 8,
+                  }}
+                >
+                  No polls yet
+                </h3>
 
-            </div>
+                <p
+                  style={{
+                    color: "#57534e",
+                    marginBottom: 20,
+                  }}
+                >
+                  Create your first poll
+                  to get started.
+                </p>
 
-          )}
+                <button
+                  onClick={() =>
+                    navigate(
+                      "/dashboard/polls/create"
+                    )
+                  }
+                  style={{
+                    background: "#ea580c",
+                    color: "#fff",
+                    border: "none",
+                    padding:
+                      "10px 18px",
+                    borderRadius: 10,
+                    cursor: "pointer",
+                    fontWeight: 600,
+                  }}
+                >
+                  Create Poll
+                </button>
+
+              </div>
+
+            )}
 
         </div>
 
