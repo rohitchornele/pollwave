@@ -20,17 +20,8 @@ import DashboardHome from './pages/dashboard/DashboardHome'
 import MyPolls from './components/dashboard/MyPolls'
 import CreatePoll from './components/dashboard/CreatePoll'
 import DashboardLayout from './layout/DashboardLayout'
-import Analytics from './components/dashboard/Analytics'
 import PollDetail from './components/dashboard/PollDetail'
 import PollVote from './components/polling/Pollvote'
-
-// Dashboard layout (renders <Outlet /> internally)
-
-// Dashboard pages — each renders its own content, no DashboardLayout wrapper needed
-// import PollDetail  from './pages/dashboard/PollDetail'
-// import Analytics   from './pages/dashboard/Analytics'
-// import Team        from './pages/dashboard/Team'
-// import Settings    from './pages/dashboard/Settings'
 
 function App() {
   return (
@@ -60,13 +51,6 @@ function App() {
           {/* <Route path="polls/:id" element={<PollDetail />} /> */}
           <Route path="polls/:pollId"     element={<PollDetail />} />
 
-          {/* /dashboard/polls/:id — uncomment when ready */}
-          {/* <Route path="polls/:id/edit" element={<CreatePoll />} /> */}
-
-          {/* /dashboard/analytics, /team, /settings — uncomment when ready */}
-          {/* <Route path="analytics"     element={<Analytics />} /> */}
-          {/* <Route path="team"          element={<Team />} /> */}
-          {/* <Route path="settings"      element={<Settings />} /> */}
         </Route>
 
         {/* ── 404 ── */}
